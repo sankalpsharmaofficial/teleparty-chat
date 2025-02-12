@@ -19,7 +19,7 @@ const ChatApp = () => {
   const [isLoading, setIsLoading] = useState(false);
   
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  const typingTimeoutRef = useRef<NodeJS.Timeout>();
+  const typingTimeoutRef = useRef<ReturnType<typeof setTimeout>>();
   const clientRef = useRef<TelepartyClient>();
 
   useEffect(() => {
@@ -208,10 +208,10 @@ const ChatApp = () => {
 
             <button
               onClick={handleCreateRoom}
-              disabled={!nickname || !isConnected}
+              disabled={!nickname || !isConnected || isLoading}
               className="w-full px-4 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl font-medium hover:from-blue-600 hover:to-blue-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-blue-500/30"
             >
-              Create New Room
+              {isLoading ? 'Creating...' : 'Create New Room'}
             </button>
 
             <div className="relative my-8">
@@ -236,10 +236,10 @@ const ChatApp = () => {
 
             <button
               onClick={handleJoinRoom}
-              disabled={!nickname || !roomId || !isConnected}
+              disabled={!nickname || !roomId || !isConnected || isLoading}
               className="w-full px-4 py-3 bg-gray-800 text-white rounded-xl font-medium hover:bg-gray-900 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Join Room
+              {isLoading ? 'Joining...' : 'Join Room'}
             </button>
 
             {!isConnected && (
