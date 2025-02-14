@@ -45,7 +45,7 @@ const ChatApp = () => {
             const typingData = message.data as TypingMessageData;
             setTypingUsers(typingData.usersTyping);
             break;
-          case SocketMessageTypes.JOIN_ROOM:
+          case 'joinRoom':
             console.log('Successfully joined room');
             break;
         }
@@ -80,9 +80,9 @@ const ChatApp = () => {
       setCurrentView('chat');
       
       alert(`Your room has been created! Room ID: ${newRoomId}\nShare this ID with others to let them join your room.`);
-    } catch (error) {
+    } catch (error: any) {
       console.error('Failed to create room. Full error:', error);
-      alert(`Failed to create room: ${error.message || 'Unknown error'}`);
+      alert(`Failed to create room: ${error?.message || 'Unknown error'}`);
     } finally {
       setIsLoading(false);
     }
@@ -98,11 +98,7 @@ const ChatApp = () => {
     try {
       await clientRef.current.joinChatRoom(nickname, roomId, userIcon || undefined);
       
-      // Get message history
-      const messageHistory = await clientRef.current.getMessageHistory();
-      if (messageHistory && messageHistory.messages) {
-        setMessages(messageHistory.messages);
-      }
+      setMessages([]);
       
       setCurrentView('chat');
     } catch (error) {

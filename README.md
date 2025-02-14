@@ -1,50 +1,63 @@
-# React + TypeScript + Vite
+# Teleparty Chat
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A real-time chat application built with React, TypeScript, and Teleparty WebSocket library.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Real-time chat functionality
+- Modern UI with Tailwind CSS
+- TypeScript for type safety
+- Vite for fast development and building
 
-## Expanding the ESLint configuration
+## 🛠️ Development
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+1. Clone the repository:
 
-- Configure the top-level `parserOptions` property like this:
+   ```bash
+   git clone https://github.com/yourusername/teleparty-chat.git
+   cd teleparty-chat
+   ```
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+4. Open [http://localhost:5173/teleparty-chat/](http://localhost:5173/teleparty-chat/) in your browser.
+
+## 🏗️ Building for Production
+
+```bash
+npm run build
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+The built files will be in the `dist` directory.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## 📦 Deployment
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+The application is automatically deployed to GitHub Pages when changes are pushed to the `main` branch. You can also manually trigger the deployment from the Actions tab in the GitHub repository.
+
+To deploy manually:
+
+```bash
+npm run deploy
 ```
+
+## 🔧 Tech Stack
+
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- Teleparty WebSocket Library
+
+## 📝 License
+
+MIT
